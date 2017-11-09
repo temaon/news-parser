@@ -19,6 +19,7 @@
 
 /public/system
 /public/assets
+/public/images
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
