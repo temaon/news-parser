@@ -1,0 +1,11 @@
+.fashion_technology_area
+  - categories.each_with_index do |category, i|
+    %div{class: i.zero? ? :fashion : :technology}
+      .single_post_content
+        %h2
+          %span
+            = category.title
+        - posts = category.posts.limit(5).decorate.to_a
+        - first_posts = posts.delete(posts.first)
+        = render 'home/big_posts', post: first_posts
+        = render 'home/small_posts', posts: posts

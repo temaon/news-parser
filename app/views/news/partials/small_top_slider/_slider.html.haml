@@ -1,0 +1,8 @@
+%section#newsSection
+  .row
+    .col-lg-12.col-md-12
+      .latest_newsarea
+        %span Последние новости
+        %ul#ticker01.news_sticker
+          = render partial: 'news/partials/small_top_slider/slide', collection: locals[:latest_news], as: :news
+        = social_share_button_tag('Main Page', class: :social_area)

@@ -1,0 +1,27 @@
+%header#header
+  .row
+    .col-lg-12.col-md-12.col-sm-12
+      .header_top
+        .header_top_left
+          %ul.top_nav
+            %li
+              = link_to 'Главная', root_path
+            %li
+              = link_to 'Контакты', '#'
+        .header_top_right
+          %p
+            = I18n.l(Time.now, format: '%A, %d %B %Y')
+    .col-lg-12.col-md-12.col-sm-12
+      .header_bottom
+        .logo_area
+          = link_to root_path, class: :logo do
+            .logo{style: 'margin-left: 14px'}
+              %span{style: 'color: #000'}
+                %strong All
+              %span
+                %strong News
+        .add_banner
+          %object#mySwf{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :height => "90", :width => "728"}
+            %param{:name => "src", :value => "https://cp.beget.com/banners/new/728x90.swf"}/
+            %param{:name => "flashVars", :value => "id_number=88338"}/
+            %embed{:flashvars => "id_number=88338", :height => "90", :name => "mySwf", :src => "https://cp.beget.com/banners/new/728x90.swf", :width => "728"}

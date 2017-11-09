@@ -1,0 +1,4 @@
+User.create!([
+  {username: "admin", name: nil, email: "test@example.com", encrypted_password: "$2a$11$6E7MPBE.05VyyzDzdtsP5u/ZmZ9luRQucPHIvhPSyf2eIBSK1pcOe", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 6, current_sign_in_at: "2017-05-10 05:12:38", last_sign_in_at: "2017-05-09 06:48:19", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmation_token: nil, confirmed_at: "2017-04-16 13:12:46", confirmation_sent_at: nil, watches_count: 0},
+  {username: "admin2", name: nil, email: "test2@example.com", encrypted_password: "$2a$11$tzuEFOJROHpCi.L3JLBkvuDjKI8SI5S0RfWPgYm/ylF/y/UlNkUwS", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: nil, confirmed_at: "2017-04-16 13:12:46", confirmation_sent_at: nil, watches_count: 0}
+])

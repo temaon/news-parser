@@ -1,0 +1,10 @@
+.single_post_content
+  %h2
+    %span Фотографии
+  %ul.photograph_nav.wow.fadeInDown
+    - @photos.each do |photo|
+      %li
+        .photo_grid
+          %figure.effect-layla
+            = link_to photo.url(:original), class: :'fancybox-buttons', 'data-fancybox-group': :button, title: link_to(photo.assetable.title, post_path(photo.assetable.slug), class: :catg_title) do
+              = image_tag photo.url(:fancy), alt: photo.assetable.title

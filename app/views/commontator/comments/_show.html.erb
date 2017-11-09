@@ -1,0 +1,54 @@
+<% # Clients of this partial must supply the following variables:
+   # comment
+   # user
+%>
+
+<% creator = comment.creator
+   name = Commontator.commontator_name(creator) || ''
+   link = Commontator.commontator_link(creator, main_app) || ''
+   avatar = Commontator.commontator_avatar(creator, self) || ''
+%>
+
+<div id="comment-6" class="comment-main-level">
+  <div class="comment-avatar">
+    <%= avatar %>
+  </div>
+  <div class="comment-box comment-context media-body">
+    <div class="comment-head">
+      <div class="comment-author comment-name by-author">
+        <div id="comment_<%= comment.id.to_s %>_top_div" class="comment_div">
+          <span id="comment_<%= comment.id.to_s %>_commontator_span" class="comment_commontator">
+            <%= link.blank? ? name : link_to(name, link) %>
+          </span>
+        </div>
+      </div>
+      <span id="comment_<%= comment.id.to_s %>_actions_span" class="comment_actions pull-right">
+            <%= render :partial => 'commontator/comments/actions',
+                       :locals => { :comment => comment,
+                                    :user => user } %>
+      </span>
+      <div class="comment-date">
+        <div id="comment_<%= comment.id.to_s %>_bottom_div" class="comment_div">
+          <span id="comment_<%= comment.id.to_s %>_created_timestamp_span" class="comment_timestamp">
+            <%= comment.created_at.to_formatted_s(:long_ordinal) %>
+          </span>
+              <br/>
+          <span id="comment_<%= comment.id.to_s %>_updated_timestamp_span" class="comment_timestamp">
+          <% if comment.is_modified? %>
+            <%= comment.updated_timestamp %>
+          <% end %>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      <div id="comment_<%= comment.id.to_s %>_body_div" class="comment_body">
+        <%= render :partial => 'commontator/comments/body',
+                   :locals => { :comment => comment } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!---->

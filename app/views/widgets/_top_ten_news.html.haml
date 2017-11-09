@@ -1,0 +1,13 @@
+- if @top_ten_news.present?
+  .single_sidebar
+    %h2
+      %span
+        = 'Популяные новости'
+    %ul.spost_nav
+      - @top_ten_news.each do |news|
+        %li
+          .media.wow.fadeInDown
+            = link_to  post_path(news), class: %i(media-left) do
+              = image_tag news.main_image(:thumb_small), alt: news.title
+            .media-body
+              = link_to news.title, post_path(news), class: :catg_title

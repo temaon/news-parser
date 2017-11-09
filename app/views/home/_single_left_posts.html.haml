@@ -1,0 +1,17 @@
+.single_post_content_left
+  %ul.business_catgnav.wow.fadeInDown
+    %li
+      %figure.bsbig_fig
+        = render 'widgets/partials/render_image_or_video', post: post
+        %figcaption
+          = link_to post.title, post_path(post), title: post.title
+        - if post.description.present?
+          %p
+            != truncate strip_tags(post.description), length: 100
+        .post_commentbox
+          %span
+            %i.fa.fa-eye>
+            = post.watches_count
+          %span
+            %i.fa.fa-calendar>
+            = "#{post.formatted_date('%H:%M')} #{post.formatted_date}"

@@ -1,0 +1,8 @@
+.single_post_content
+  %h2
+    %span
+      = category.title
+  - posts = category.posts.latest.limit(5).decorate.to_a
+  - first_posts = posts.delete(posts.first)
+  = render 'home/single_left_posts', post: first_posts
+  = render 'home/single_right_posts', posts: posts

@@ -1,0 +1,16 @@
+.single_post_content_right
+  %ul.spost_nav
+    - posts.each do |post|
+      %li
+        .media.wow.fadeInDown
+          = link_to post_path(post), class: %i(media-left), title: post.title  do
+            = image_tag post.main_image(:thumb_small), alt: post.title
+          .media-body
+            = link_to post.title, post_path(post), class: %i(catg_title), title: post.title
+            .post_commentbox
+              %span
+                %i.fa.fa-eye>
+                = post.watches_count
+              %span
+                %i.fa.fa-calendar>
+                = "#{post.formatted_date('%H:%M')} #{post.formatted_date}"

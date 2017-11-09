@@ -1,0 +1,9 @@
+- if news.has_video_info?
+  .video-section.featured-wrap
+    .frame.themeum-overlay-wrap.yes{style: "background: url(#{news.get_video_info.thumbnail_large}) center no-repeat; background-size: cover"}
+    = link_to 'Смотреть видео', '#', class: %i(link-video)
+    != news.get_video_info.embed_code(iframe_attributes: { width: '100%', height: '100%', 'data-key': 'value' })
+- elsif news.video_content.present?
+  .video-section.featured-wrap.without_layout
+    = link_to 'Смотреть видео', '#', class: %i(link-video)
+    != news.video_content.html_safe

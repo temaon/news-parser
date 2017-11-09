@@ -1,0 +1,4 @@
+ParserSetting.create!([
+  {base_url: "http://www.segodnya.ua/politics.html", base_links_selector: ".overflow-wrap.white-frame a", title_selector: ".title h1", content_selector: "span._ga1_on_", gallery_selector: "figure img, .article-content ul li img, .article_cut_image img", date_selector: ".title div span:first-child", tags_selector: "div.tag a", category_selector: "", category_id: 7, video_frame: ".player-wrapper iframe", article_content: ".article-content"},
+  {base_url: "http://www.segodnya.ua/sport.html", base_links_selector: ".overflow-wrap.white-frame a", title_selector: ".title h1, .article_cut h1", content_selector: "span._ga1_on_", gallery_selector: "figure img, .article_cut_image img, .article-content ul li img", date_selector: ".title div span:first-child", tags_selector: "div.tag a", category_selector: "", category_id: 10, video_frame: ".player-wrapper iframe", article_content: ".article-content"}
+])

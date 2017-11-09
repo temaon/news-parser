@@ -1,0 +1,15 @@
+<% # Clients of this partial must supply the following variables:
+   # comments
+   # user
+%>
+<div id="comments" class="comments-area comments", style="background:#dee1e3; padding: 10px">
+  <ul class="comments-list comment-list" id="comments-list">
+    <% comments.each do |comment| %>
+      <li class="comment byuser even thread-even" id="li-comment-<%= comment.id.to_s %>">
+        <%= render :partial => 'commontator/comments/show',
+                   :locals => { :comment => comment,
+                                :user => user } %>
+      </li>
+    <% end %>
+  </ul>
+</div>

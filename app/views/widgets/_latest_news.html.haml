@@ -1,0 +1,18 @@
+- if @latest_news_except.present?
+  .latest_post
+    %h2
+      %span
+        = 'Последние новости'
+    .latest_post_container
+      #prev-button
+        %i.fa.fa-chevron-up
+      %ul.latest_postnav
+        - @latest_news_except.each do |news|
+          %li
+            .media.wow.fadeInDown
+              = link_to  post_path(news), class: %i(media-left) do
+                = image_tag news.main_image(:thumb_small), alt: news.title
+              .media-body
+                = link_to news.title, post_path(news), class: :catg_title
+      #next-button
+        %i.fa.fa-chevron-down

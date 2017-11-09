@@ -1,0 +1,17 @@
+%section#navArea
+  %nav.navbar.navbar-inverse{role: 'navigation'}
+    .navbar-header
+      %button.navbar-toggle.collapsed{'aria-control': 'navbar', 'aria-expande': 'false', 'data-targe': '#navbar', 'data-toggl': 'collapse', type: 'button'}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.main_nav
+        %li.active
+          = link_to root_path do
+            %span.fa.fa-home.desktop-home
+            %span.mobile-show Главная
+        - if defined?(categories) && categories.present?
+          - categories.each do |category|
+            = render 'layouts/partials/menu_item', locals: {category: category}

@@ -1,0 +1,8 @@
+%ul.spost_nav
+  - posts.each do |post|
+    %li
+      .media.wow.fadeInDown
+        = link_to post_path(post), class: %i(media-left), title: post.title  do
+          = image_tag post.main_image(:medium), alt: post.title
+        .media-body
+          = link_to post.title, post_path(post), title: post.title, class: :catg_title

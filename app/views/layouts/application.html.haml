@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %title NewsFeed
+    %meta{charset: 'utf-8'}/
+    %meta{content: 'IE=edge', 'http-equi': 'X-UA-Compatible'}/
+    %meta{name: :viewport, content: 'width=device-width, user-scalable=no, initial-scale=1.0'}
+    = yield(:javascript_before)
+    = yield(:stylesheet_before)
+    = stylesheet_link_tag :application, media: :all
+    = stylesheet_link_tag controller_css, media: :all if asset_exists? controller_css
+    = javascript_include_tag :application
+    = javascript_include_tag controller_js if asset_exists? controller_js
+    = csrf_meta_tags
+    /[if lt IE 9]
+    -#= javascript_include_tag 'html5shiv.min', data: {'turbolinks-track': :reload}
+    -#= javascript_include_tag 'respond.min', data: {'turbolinks-track': :reload}
+  %body
+    #preloader
+      #status
+    %a.scrollToTop{href: '#'}
+      %i.fa.fa-angle-up
+    .container
+      = render 'layouts/partials/header'
+      = render 'layouts/partials/main_nav_menu', {categories: @categories}
+      = render 'news/partials/small_top_slider/slider', locals: {latest_news: @latest_news}
+      = yield(:header) if content_for?(:header)
+      = content_for?(:main_content) ? yield(:main_content) : yield
+      = yield(:footer) if content_for?(:footer)
+      = render 'layouts/partials/footer'
+      = yield(:stylesheet_after) if content_for?(:stylesheet_after)
+      = yield(:javascript_after) if content_for?(:javascript_after)
+

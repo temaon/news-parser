@@ -1,0 +1,10 @@
+
+- unless locals[:category].children.present?
+  %li
+    = link_to locals[:category].title, category_path(locals[:category])
+- else locals[:category].children.present?
+  %li.dropdown
+    = link_to locals[:category].title, '#', {class: 'dropdown-toggle', 'aria-expande': 'false', 'data-toggl': 'dropdown', role: 'button'}
+    %ul.dropdown-menu{role: :menu}
+      - locals[:category].children.each do |category|
+        = render 'layouts/partials/menu_item', locals: {category: category}

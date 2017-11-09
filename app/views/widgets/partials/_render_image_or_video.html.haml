@@ -1,0 +1,15 @@
+- if post.has_video_info?
+  .video-section.featured-wrap
+    .frame.themeum-overlay-wrap.yes{style: "background: url(#{post.get_video_info.thumbnail_large}) center no-repeat; background-size: cover"}
+    = link_to 'Смотреть видео', '#', class: %i(link-video)
+    != post.get_video_info.embed_code(iframe_attributes: { width: '100%', height: '100%', 'data-key': 'value' })
+    %span.overlay
+- elsif post.video_content.present?
+  .video-section.featured-wrap.without_layout.category_index
+    = link_to 'Смотреть видео', '#', class: %i(link-video)
+    != post.video_content.html_safe
+    %span.overlay
+- else
+  = link_to post_path(post), class: %i(featured_img), title: post.title  do
+    = image_tag post.main_image(:medium), alt: post.title
+    %span.overlay

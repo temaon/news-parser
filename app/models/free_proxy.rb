@@ -1,0 +1,2 @@
+class FreeProxy < ApplicationRecord
+end

@@ -1,0 +1,35 @@
+%footer#footer
+  .footer_top
+    .row
+      .col-lg-4.col-md-4.col-sm-4
+        .footer_widget.wow.fadeInLeftBig
+          %h2 Мы рады стараться для вас!
+          %object#mySwf{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :height => "300", :width => "234"}
+            %param{:name => "src", :value => "https://cp.beget.com/banners/new/234x300.swf"}/
+            %param{:name => "flashVars", :value => "id_number=88338"}/
+            %embed{:flashvars => "id_number=88338", :height => "300", :name => "mySwf", :src => "https://cp.beget.com/banners/new/234x300.swf", :width => "234"}
+      .col-lg-4.col-md-4.col-sm-4
+        .footer_widget.wow.fadeInDown
+          %h2 Разделы
+          %ul.tag_nav
+            - @footer_categories.each do |category|
+              %li
+                = link_to category.title, category_path(category)
+
+      .col-lg-4.col-md-4.col-sm-4
+        .footer_widget.wow.fadeInRightBig
+          %h2 Инфо:
+          %p
+            Просим обратить Ваше внимание, что весь контент (или почти весь:), размещенный на сайте, не является авторским!
+            Администрация сайта не несет ответсвенность за содержание постов.
+          .banner
+            %object#mySwf2{:classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :height => "60", :width => "234"}
+              %param{:name => "src", :value => "https://cp.beget.com/promo_data/new/234x60.swf"}/
+              %param{:name => "flashVars", :value => "id_number=88338"}/
+              %embed{:flashvars => "id_number=88338", :height => "60", :name => "mySwf", :src => "https://cp.beget.com/promo_data/new/234x60.swf", :width => "234"}
+  .footer_bottom
+    %p.copyright
+      Copyright ©
+      = Date.today.strftime('%Y')
+      = link_to 'AllNews', root_path
+    %p.developer Developed By AtrDevelop

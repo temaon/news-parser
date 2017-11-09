@@ -1,0 +1,30 @@
+//fonts
+$font_0: Oswald;
+$font_1: Varela;
+$font_2: Open Sans;
+
+//urls
+$url_0: asset-data-url('Oswald-Regular-400.woff');
+$url_1: asset-data-url('Varela-400.woff');
+$url_2: asset-data-url('OpenSans-400.woff');
+
+@font-face {
+  font-family: $font_0;
+  src: asset-data-url('Oswald-Regular.eot');
+  src: local('Oswald Regular'), asset-data-url('Oswald-Regular.woff') format('woff'), asset-data-url('Oswald-Regular.ttf') format('truetype'), asset-data-url('Oswald-Regular.svg') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font_1;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Varela"), $url_1 format("woff");
+}
+@font-face {
+  font-family: $font_2;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans"),local("OpenSans"), $url_2 format("woff");
+}

@@ -1,0 +1,8 @@
+proxy_list_update:
+  cron: '0 */5 * * *'
+  class: 'ProxyListWorker'
+  queue: 'default'
+news_parser_works:
+  cron: '0 */3 * * *'
+  class: 'MainJob'
+  queue: 'default'

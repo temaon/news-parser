@@ -1,0 +1,89 @@
+%section#contentSection
+  .row
+    .col-lg-8.col-md-8.col-sm-8
+      .left_content
+        .fashion_technology_area
+          .single_post_content
+            %ol.breadcrumb
+              = render_breadcrumbs separator: ' / ', tag: :li
+            %h2
+              %span
+                = @category.title
+          - @posts_modify.each_with_index do |item, i|
+            %div{class: i.zero? ? :fashion : :technology}
+              - posts = item
+              - first_posts = posts.delete(posts.first)
+              = render 'home/big_posts', post: first_posts.decorate
+              = render 'home/small_posts', posts: posts
+          .row
+            .col-sm-12
+              = paginate(@posts, window: 8)
+        = render 'widgets/photo_gallery'
+        .single_post_content
+          %h2
+            %span
+              = 'Разное'
+          - posts = @other_news.map(&:decorate)
+          - first_posts = posts.delete(posts.first)
+          = render 'home/single_left_posts', post: first_posts
+          = render 'home/single_right_posts', posts: posts
+    .col-lg-4.col-md-4.col-sm-4
+      %aside.right_content
+        = render 'widgets/latest_news'
+        = render 'widgets/top_ten_news'
+        .single_sidebar
+          %ul.nav.nav-tabs{role: 'tablist'}
+            %li.active{role: 'presentation'}
+              %a{'aria-control': 'home', 'data-toggl': 'tab', href: '#category', role: 'tab'} Category
+            %li{role: 'presentation'}
+              %a{'aria-control': 'profile', 'data-toggl': 'tab', href: '#video', role: 'tab'} Video
+            %li{role: 'presentation'}
+              %a{'aria-control': 'messages', 'data-toggl': 'tab', href: '#comments', role: 'tab'} Comments
+          .tab-content
+            #category.tab-pane.active{role: 'tabpanel'}
+              %ul
+                %li.cat-item
+                  %a{href: '#'} Sports
+                %li.cat-item
+                  %a{href: '#'} Fashion
+                %li.cat-item
+                  %a{href: '#'} Business
+                %li.cat-item
+                  %a{href: '#'} Technology
+                %li.cat-item
+                  %a{href: '#'} Games
+                %li.cat-item
+                  %a{href: '#'} Life & Style
+                %li.cat-item
+                  %a{href: '#'} Photography
+            #video.tab-pane{role: 'tabpanel'}
+              .vide_area
+                %iframe{allowfullscreen: '', frameborder: '0', height: '250', src: 'http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage', width: '100%'}
+            #comments.tab-pane{role: 'tabpanel'}
+              %ul.spost_nav
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'pages/single_page.html'}
+                      %img{alt: '', src: 'images/post_img1.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'pages/single_page.html'} Aliquam malesuada diam eget turpis varius 1
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'pages/single_page.html'}
+                      %img{alt: '', src: 'images/post_img2.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'pages/single_page.html'} Aliquam malesuada diam eget turpis varius 2
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'pages/single_page.html'}
+                      %img{alt: '', src: 'images/post_img1.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'pages/single_page.html'} Aliquam malesuada diam eget turpis varius 3
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'pages/single_page.html'}
+                      %img{alt: '', src: 'images/post_img2.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'pages/single_page.html'} Aliquam malesuada diam eget turpis varius 4
+        = render 'widgets/sponsor'
+        = render 'layouts/partials/right_navbar'

@@ -1,0 +1,111 @@
+%section#contentSection
+  .row
+    .col-lg-8.col-md-8.col-sm-8
+      .left_content
+        .single_page
+          %ol.breadcrumb
+            = render_breadcrumbs separator: ' / ', tag: :li
+          %h1
+            = news.title
+          .post_commentbox
+            %span
+              %i.fa.fa-eye>
+              = news.watches_count
+            %span
+              %i.fa.fa-calendar>
+              = "#{news.formatted_date('%H:%M')} #{news.formatted_date}"
+            %a{href: '#'}
+              %i.fa.fa-tags
+              = news.tags.join(', ')
+          .single_page_content
+            - if news.has_video?
+              = render 'news/partials/render_video', news: news
+            - else
+              - if news.images.size > 1
+                - swiper(news.images) do |item|
+                  = image_tag item.data.url
+              - else
+                = image_tag news.main_image(:medium), class: 'img-center', alt: news.title
+            != news.description
+            %p
+              = link_to 'Ссылка на оригинал', news.original_url, rel: :nofollow, target: :_blank
+          = social_share_button_tag_news_page(news.title)
+          = commontator_thread(news)
+          = render 'widgets/related_posts', news: @related_news
+    %nav.nav-slit
+      - if @next_news.present?
+        = link_to post_path(@next_news), class: :next do
+          %span.icon-wrap
+            %i.fa.fa-angle-left
+          %div
+            %h3
+              = @next_news.title
+            = image_tag @next_news.main_image, alt: @next_news.title
+      - if @prev_news.present?
+        = link_to post_path(@prev_news), class: :prev do
+          %span.icon-wrap
+            %i.fa.fa-angle-left
+          %div
+            %h3
+              = @prev_news.title
+            = image_tag @prev_news.main_image, alt: @prev_news.title
+    .col-lg-4.col-md-4.col-sm-4
+      %aside.right_content
+        = render 'widgets/latest_news'
+        = render 'widgets/top_ten_news'
+        .single_sidebar
+          %ul.nav.nav-tabs{role: 'tablist'}
+            %li.active{role: 'presentation'}
+              %a{'aria-control': 'home', 'data-toggl': 'tab', href: '#category', role: 'tab'} Category
+            %li{role: 'presentation'}
+              %a{'aria-control': 'profile', 'data-toggl': 'tab', href: '#video', role: 'tab'} Video
+            %li{role: 'presentation'}
+              %a{'aria-control': 'messages', 'data-toggl': 'tab', href: '#comments', role: 'tab'} Comments
+          .tab-content
+            #category.tab-pane.active{role: 'tabpanel'}
+              %ul
+                %li.cat-item
+                  %a{href: '#'} Sports
+                %li.cat-item
+                  %a{href: '#'} Fashion
+                %li.cat-item
+                  %a{href: '#'} Business
+                %li.cat-item
+                  %a{href: '#'} Technology
+                %li.cat-item
+                  %a{href: '#'} Games
+                %li.cat-item
+                  %a{href: '#'} Life & Style
+                %li.cat-item
+                  %a{href: '#'} Photography
+            #video.tab-pane{role: 'tabpanel'}
+              .vide_area
+                %iframe{allowfullscreen: '', frameborder: '0', height: '250', src: 'http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage', width: '100%'}
+            #comments.tab-pane{role: 'tabpanel'}
+              %ul.spost_nav
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'single_page.html'}
+                      %img{alt: '', src: '../images/post_img1.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'single_page.html'} Aliquam malesuada diam eget turpis varius 1
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'single_page.html'}
+                      %img{alt: '', src: '../images/post_img2.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'single_page.html'} Aliquam malesuada diam eget turpis varius 2
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'single_page.html'}
+                      %img{alt: '', src: '../images/post_img1.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'single_page.html'} Aliquam malesuada diam eget turpis varius 3
+                %li
+                  .media.wow.fadeInDown
+                    %a.media-left{href: 'single_page.html'}
+                      %img{alt: '', src: '../images/post_img2.jpg'}/
+                    .media-body
+                      %a.catg_title{href: 'single_page.html'} Aliquam malesuada diam eget turpis varius 4
+        = render 'widgets/sponsor'
+        = render 'layouts/partials/right_navbar'

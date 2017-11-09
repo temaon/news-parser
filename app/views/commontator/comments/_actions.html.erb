@@ -1,0 +1,36 @@
+<% # Clients of this partial must supply the following variables:
+   # comment
+   # user
+%>
+
+<% can_edit = comment.can_be_edited_by?(user)
+   can_delete = comment.can_be_deleted_by?(user) %>
+
+<% if can_edit %>
+  <%= link_to commontator.edit_comment_path(comment),
+              title:  t('commontator.comment.actions.edit'),
+              :id => "comment_#{comment.id.to_s}_edit_link",
+              :class => %i(comment_edit_link pull-right),
+              :remote => true do %>
+        <i class="fa fa-pencil"></i>
+  <% end %>
+<% end %>
+&nbsp;
+
+<% if can_delete %>
+  <% is_deleted = comment.is_deleted? %>
+  <% del_string = is_deleted ? 'undelete' : 'delete' %>
+  <%= link_to commontator.polymorphic_path([del_string, comment]),
+              title: t("commontator.comment.actions.#{del_string}"),
+              :confirm => (!is_deleted ? t('commontator.comment.actions.confirm_delete') : nil),
+              :method => :put,
+              :id => "comment_#{comment.id.to_s}_#{del_string}_link pull-right",
+              :class => "comment_#{del_string}_link",
+              :remote => true do  %>
+        <% if is_deleted %>
+          <i class="fa fa-undo" aria-hidden="true"></i>
+        <% else %>
+          <i class="fa fa-trash-o"></i>
+        <% end %>
+  <% end %>
+<% end %>
